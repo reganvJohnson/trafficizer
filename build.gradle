@@ -27,10 +27,14 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter')
 	compile('org.springframework.boot:spring-boot-starter-web')
 
-	
+    // https://mvnrepository.com/artifact/org.apache.derby/derby
+	compile group: 'org.apache.derby', name: 'derby', version: '10.14.1.0'
+	compile group: 'org.apache.derby', name: 'derbyclient', version: '10.14.1.0'
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	                         
     compile("org.springframework.boot:spring-boot-starter-jetty")
     // end::jetty[]
     // tag::actuator[]
