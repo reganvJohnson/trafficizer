@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Core Online Tutorial - List Cars</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+    <link href="../../static/css/spring-core.css"
+          th:href="@{css/spring-core.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(cars)}">
+        <h2>Car List</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>AAR Code</th>
+                <th>Carrier</th>
+                <th>Carrier Code</th>
+                <th>Number</th>
+                <th>List</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="car : ${cars}">
+                <td th:text="${car.id}"></td>
+                <td th:text="${car.description}"></td>
+                <td th:text="${car.aar_code}"></td>
+                <td th:text="${car.carrier}"></td>
+                <td th:text="${car.carrier_code}"></td>
+                <td th:text="${car.number}"></td>
+                <td><a th:href="${'/car/show/' + car.id}">View</a> </td>
+                <td><a th:href="${'/car/edit/' + car.id}">Edit</a> </td>
+                <td><a th:href="${'/car/delete/' + car.id}">Delete</a> </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <a href="/car/new">New Car</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
