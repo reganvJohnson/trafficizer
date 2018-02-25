@@ -1,6 +1,45 @@
 -change port number
 -endpoints for: 
 --car CRUD
+--siding CRUD
 --criteria CRUD
 --session creation
 --session view
+
+
+Siding (includes staging)
+ID
+Industry name
+track number
+size
+
+
+demand (ie: a waybill)
+ID
+car type
+source (on track/staging)
+duration (on staging)
+probability of coming in (eg 10%)
+probability of going off (eg: 100%)
+
+Criteria (one entry per 'kind' of session (busy, medium, slow))
+busy multiplier 1
+slow multiplier 0.5
+
+
+Session:
+id
+date
+
+
+session entry
+id
+session.id
+car.id is at siding.id, and going to siding.id
+
+
+go through all sidings, see if anything is coming off.
+go through all demands, multiply criteriaMultiplier by demand.probability_of_coming_in, 
+if rand() > demand
+   find a car to meet demand
+   mate car and demand, add to session
